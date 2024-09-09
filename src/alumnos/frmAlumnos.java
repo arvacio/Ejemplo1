@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class frmAlumnos {
+public class frmAlumnos extends JFrame {
     private JTextField txtNombre;
     private JTextField txtAPaterno;
     private JPasswordField txtAMaterno;
@@ -15,14 +15,21 @@ public class frmAlumnos {
     private JButton aceptarButton;
     private JButton cancelarButton;
     private JTextField txtCURP;
+    private JPanel pnlPrincipal;
+    private BotonGuardarListener botonGuardarListener;
 
 
     public frmAlumnos() {
+        setTitle("Alumnos");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setContentPane(pnlPrincipal);
+
         poblarComboBox();
+        setLocationRelativeTo(null);
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                enviarDatos();
             }
         });
         cancelarButton.addActionListener(new ActionListener() {
@@ -31,6 +38,26 @@ public class frmAlumnos {
                 Borrar();
             }
         });
+    }
+    public void setBotonGuardarListener(BotonGuardarListener listener) {
+        this.botonGuardarListener = listener;
+    }
+    private void enviarDatos() {
+        String nombre = txtNombre.getText();
+        String apaterno = txtAPaterno.getText();
+        String amaterno = txtAMaterno.getText();
+        String CURP = txtCURP.getText();
+        String correo = txtCorreo.getText();
+        String telefono = txtTelefono.getText();
+        String sexo = cmbSexo.getSelectedItem().toString();
+        Boolean discapacidad = chkDiscapacidad.isSelected();
+
+        alumno dato= new alumno(nombre,apaterno,amaterno,CURP,telefono,correo,discapacidad);
+
+        if(botonGuardarListener != null) {
+            botonGuardarListener.guardando(dato);
+        }
+        Borrar();
     }
     private void Borrar()
     {

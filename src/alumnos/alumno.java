@@ -20,5 +20,11 @@ public class alumno {
         this.correo=correo;
         this.discapacidad=discapacidad;
     }
+    public String getNombre() {
+        return nombre;
+    }
+    public String getAPaterno() {
+        return apaterno;
+    }
 
 }
