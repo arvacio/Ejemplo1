@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 public class frmAlumnos extends JFrame {
     private JTextField txtNombre;
     private JTextField txtAPaterno;
-    private JPasswordField txtAMaterno;
+    private JTextField txtAMaterno;
     private JTextField txtCorreo;
     private JTextField txtTelefono;
     private JComboBox cmbSexo;
@@ -20,10 +20,11 @@ public class frmAlumnos extends JFrame {
 
 
     public frmAlumnos() {
+
         setTitle("Alumnos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(pnlPrincipal);
-
+        pack();
         poblarComboBox();
         setLocationRelativeTo(null);
         aceptarButton.addActionListener(new ActionListener() {
@@ -52,7 +53,7 @@ public class frmAlumnos extends JFrame {
         String sexo = cmbSexo.getSelectedItem().toString();
         Boolean discapacidad = chkDiscapacidad.isSelected();
 
-        alumno dato= new alumno(nombre,apaterno,amaterno,CURP,telefono,correo,discapacidad);
+        alumno dato= new alumno(nombre,apaterno,amaterno,CURP,telefono,correo,discapacidad,sexo);
 
         if(botonGuardarListener != null) {
             botonGuardarListener.guardando(dato);
@@ -78,4 +79,6 @@ public class frmAlumnos extends JFrame {
             comboBoxModel.addElement(genero);
         }
     }
+
+
 }
