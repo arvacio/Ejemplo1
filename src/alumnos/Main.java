@@ -28,7 +28,7 @@ public class Main {
                         System.out.println("Discapacidad: "+persona.getDiscapacidad());
 
                         Path path= Path.of("C:\\Users\\Oscar\\Desktop\\Oscar\\texto.txt");
-                        String contenido = "Nombre: " + persona.getNombre() + " - Ap. Paterno: " + persona.getAPaterno() + " - Ap. Materno=: " + persona.getAMaterno() + " - Sexo: " + persona.getSexo() + " - CURP: " + persona.getCURP() + " - Edad: " + persona.getEdad() + " - Correo: " + persona.getCorreo() + " - Telefono: " + persona.getTelefono() + " - Discapacidad: " + persona.getDiscapacidad();
+                        String contenido = " Nombre: " + persona.getNombre() + " - Ap. Paterno: " + persona.getAPaterno() + " - Ap. Materno=: " + persona.getAMaterno() + " - Sexo: " + persona.getSexo() + " - CURP: " + persona.getCURP() + " - Edad: " + persona.getEdad() + " - Correo: " + persona.getCorreo() + " - Telefono: " + persona.getTelefono() + " - Discapacidad: " + persona.getDiscapacidad();
 
                         try(FileWriter archivo= new FileWriter(path.toFile(),true)){
                             PrintWriter pw= new PrintWriter(archivo);
