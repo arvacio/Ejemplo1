@@ -1,5 +1,9 @@
 package alumnos;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 public class alumno {
     private String nombre;
     private String apaterno;
@@ -52,5 +56,25 @@ public class alumno {
             return "Si";
         else
             return "No";
+    }
+    public int getEdad(){
+        String fechaNacimiento = getCURP().substring(4, 10);
+        String año = fechaNacimiento.substring(0, 2);
+        String mes = fechaNacimiento.substring(2, 4);
+        String dia = fechaNacimiento.substring(4, 6);
+        int añoNacimiento = Integer.parseInt(año);
+
+        if(añoNacimiento < 20){
+            añoNacimiento += 2000;
+        } else{
+            añoNacimiento += 1900;
+        }
+
+        String fechaNacimi = añoNacimiento + "-" + mes + "-" + dia;
+        LocalDate fechaNac = LocalDate.parse(fechaNacimi, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        LocalDate fechaActual = LocalDate.now();
+        Period edad = Period.between(fechaNac, fechaActual);
+        return edad.getYears();
     }
 }
